@@ -5,29 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="src/bootstrap5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
     <title>Document</title>
 </head>
 <body>
-    <div id="todolist_page" class="container">
+    <div id="todolist_page" class="container-fluid">
         <header class="row m-2">
-            <h1 class="col-lg-12 border border-color-success d-flex justify-content-center">Todoliste</h1>
+            <h1 class="col-lg-12  d-flex justify-content-center">Todoliste</h1>
         </header>
         
-        <form action="" class="row d-flex justify-content-center m-2 border ">
+        <form action="" class="row d-flex justify-content-center m-2 ">
             <div class="col-lg-6">
                 <input type="text" id="task_field" class="form-control">
             </div>
-            <div class="col-lg-1">
-                <input type="button" value="ADD" >
-                <button class="btn btn-primary"><i class="bi bi-plus"></i></button>
+            <div class="col-lg-2">
+                <!-- <input type="button" value="ADD" > -->
+                <button class="btn btn-primary">ADD<i class="bi bi-plus-lg"></i></button>
             </div>
             
         </form> 
-        <div id="tasks_area" class="row m-4">
-            <div class="task_row d-flex justify-content-center border ">
-                <input type="text" class="task_content col-lg-6">
-                <button class="btn_update col-lg-1">icone de crayon</button>
-                <button class="btn_delete col-lg-1">icone de poubelle</button>
+        <div id="tasks_area" class="row m-4 border ">
+            <div class="task_row d-flex  row p-4">
+                <div class="col-lg-6 ">
+                    <input type="text" class="task_content form-control bg-light" readonly>
+                </div>
+                <div class="col-lg-2">
+                    <button class="btn_update btn btn-success"><i class="bi bi-pencil"></i></button>
+                    <button class="btn_delete btn btn-danger"><i class="bi bi-trash"></i></button>
+                </div>
+                
             </div>
         </div>  
         
