@@ -1,0 +1,17 @@
+
+.Myform{
+            height: 55px;
+            border-radius: 2px;
+            box-shadow: 2px 2px  lightblue;
+            /*border-color: rgba(250, 244, 244, 0.979);*/
+            border-color: white;
+        }
+
+        .button_style{
+            height: 55px;
+            width: 90px;
+        }
+
+        .task_row{
+            background-color: brown;
+        }
