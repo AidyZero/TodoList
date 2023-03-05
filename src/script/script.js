@@ -5,6 +5,8 @@ const btn_add = document.querySelector('#btn_add')
 
 const tasks_area = document.querySelector('#tasks_area')
 
+var btn_delete;
+
 //const task_row = document.querySelectorAll('.task_row')
 
 //const task_content = document.querySelectorAll('.task_content')
@@ -18,6 +20,10 @@ const tasks_area = document.querySelector('#tasks_area')
 
 const tasks = ['Travailler','Jouer']
 
+//////AFFICHAGE DES TACHES///////////////
+
+function tasksManager(){
+
     for(let i = 0;i < tasks.length;i++){
 
         if(typeof tasks[i] === 'string' && tasks[i]){
@@ -28,6 +34,10 @@ const tasks = ['Travailler','Jouer']
             const btn_delete = document.createElement('button')
             const icone_pencil = document.createElement('i')
             const icone_trash = document.createElement('i')
+            const btn_ok = document.createElement('button')
+            const btn_cancel = document.createElement('button')
+            const icone_cancel = document.createElement('i')
+
 
             task_row.className = 'd-flex  row p-4'
             //task_content.classeName = 'Myform  bg-light col-lg-6 m-2'
@@ -39,15 +49,47 @@ const tasks = ['Travailler','Jouer']
             icone_trash.className = 'bi bi-trash col-lg-2 h2'
             task_content.setAttribute('type','text')
             task_content.setAttribute('readonly','readonly')
+            btn_ok.setAttribute('class','btn_ok border border-primary   col-lg-1 button_style m-2')
+            btn_ok.innerHTML = "<b>OK</b>"
+            btn_cancel.setAttribute('class','btn_cancel border border-danger   col-lg-1 button_style m-2')
+            icone_cancel.setAttribute('class','bi bi-x-lg h2')
+           
+
             task_content.value = tasks[i]
             
             tasks_area.appendChild(task_row)
             task_row.insertBefore(task_content,task_row.firstChild)
             task_row.appendChild(btn_update)
             task_row.appendChild(btn_delete)
-           btn_update.appendChild(icone_pencil)
-           btn_delete.appendChild(icone_trash)
-            
+            btn_update.appendChild(icone_pencil)
+            btn_delete.appendChild(icone_trash)
+            btn_cancel.appendChild(icone_cancel)
+                
+            btn_delete.addEventListener('click',()=>{
+                    tasks_area.removeChild(task_row)
+                })
+
+            btn_update.addEventListener('click',()=>{
+                btn_update.replaceWith(btn_ok)
+                btn_delete.replaceWith(btn_cancel)
+                task_content.removeAttribute('readonly');
+                
+            })
+
+            btn_cancel.addEventListener('click',()=>{
+                btn_ok.replaceWith(btn_update)
+                btn_cancel.replaceWith(btn_delete)
+                task_content.setAttribute('readonly','readonly')
+                task_content.value = tasks[i]
+
+            })
+
+            btn_ok.addEventListener('click',()=>{
+                btn_ok.replaceWith(btn_update)
+                btn_cancel.replaceWith(btn_delete)
+                task_content.setAttribute('readonly','readonly')
+                tasks[i] = task_content.value
+            })
 
             alert(task_content)
             console.log(task_row)
@@ -57,22 +99,19 @@ const tasks = ['Travailler','Jouer']
             console.log(icone_pencil)
             console.log(icone_trash)
             
-            /*Cette semaine j'ai appris a creer les lements du DOM et les afficher.
-            Au  prochain weekend je vais creer mettre des evenements dans les differents boutons*/
- 
-
-
-
-            
-
-
-
-
-            
-
+           
         }
     
     }
+
+
+}
+    
+/////Evenement des boutons/////////
+
+
+tasksManager()
+
 
 
 
